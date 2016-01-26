@@ -62,7 +62,11 @@ public:
 		, flags(flags)
 	{
 		// make sure that all formatting happens using the standard, C locale and not the user's current locale
-		buff.imbue( std::locale("C") );
+		try {
+			buff.imbue( std::locale("C") );
+		}
+		catch(...)
+		{}
 	}
 
 	~JSONWriter()
